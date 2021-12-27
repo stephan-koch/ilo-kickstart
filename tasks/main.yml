@@ -1,0 +1,71 @@
+
+  - name: PowerOFF
+    include_role:  
+        name: hpe.ilo.powerforceoff
+  
+  - name: adjust kickstart file
+    template:
+        src: "ks.j2"
+        dest:  "{{playbook_dir}}/ks.cfg"    
+    
+  
+  - name: prepare usb stick
+    become: yes
+    shell: "{{role_path}}/files/prep_usb.sh {{playbook_dir}} {{myhostname}} {{webserverdir}}" 
+  
+  - name: Insert Virtual Media
+    community.general.redfish_command:
+      category: Manager
+      command: VirtualMediaInsert
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      virtual_media:
+        image_url: '{{webserver}}/{{esxiso}}'
+        media_types:
+          - CD
+          - DVD
+      resource_id: "1"
+      # boot.cfg tweaked with kernelopt=cdromBoot runweasel ks=usb:/ks.cfg
+
+  - name: Insert USB Virtual Media
+    community.general.redfish_command:
+      category: Manager
+      command: VirtualMediaInsert
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      virtual_media:
+        image_url: '{{webserver}}/esx7ks-{{myhostname}}.img'
+        media_types:
+          - USBStick
+      resource_id: "1"
+      
+  - name: SetOneTimeBoot
+    vars:
+      - bootdevice: "Cd"
+    include_role:
+      name: hpe.ilo.setonetimeboot
+      
+  - name: PowerOn
+    include_role:  
+        name: hpe.ilo.poweron
+
+  - name: wait for port 22 to become active
+    wait_for:
+      host: "{{myip}}"
+      port: 22
+      delay: 20
+      state: started
+      timeout: 1600
+        
+  - name: Eject USB Virtual Media
+    community.general.redfish_command:
+      category: Manager
+      command: VirtualMediaEject
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      virtual_media:
+        image_url: '{{webserver}}/esx7ks-{{myhostname}}.img'
+      resource_id: "1"
