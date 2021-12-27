@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+An role for os installation with an kickstart file on an HPE Proliant
 
 Requirements
 ------------
