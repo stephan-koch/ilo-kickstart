@@ -1,4 +1,3 @@
-
   - name: PowerOFF
     include_role:  
         name: hpe.ilo.powerforceoff

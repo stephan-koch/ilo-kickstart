@@ -5,5 +5,5 @@ galaxy_info:
   company: hpe.com
   version: 0.1
 collections:
-  -  hpe.ilo
+  - hpe.ilo
   - community.general
