@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: ilo-kickstart
+  role_name: ilo_kickstart
   description: "Install an os on an hpe proliant by mounting iso and kickstart via ilo virtualmedia"
   author: stephan.koch@hpe.com
   company: hpe.com
