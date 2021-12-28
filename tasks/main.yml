@@ -57,6 +57,7 @@
       delay: 20
       state: started
       timeout: 1600
+    when: eject == 'true'
         
   - name: Eject USB Virtual Media
     community.general.redfish_command:
@@ -68,3 +69,4 @@
       virtual_media:
         image_url: '{{webserver}}/esx7ks-{{myhostname}}.img'
       resource_id: "1"
+    when: eject == 'true'

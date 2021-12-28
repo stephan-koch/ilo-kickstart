@@ -1,2 +1,4 @@
 ---
 # vars file for ilo-kickstart
+#
+eject: "{{ eject_usb | default(true) }}"

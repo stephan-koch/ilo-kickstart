@@ -16,6 +16,7 @@ This role uses:
     - password: <ilo-password>
     - webserver: <webserver from where to mount the virt. media> e.g.: "http://osdepl.demo.local/esx7"
     - esxiso: <name of the iso file> e.g.: "esx72usb.iso"
+    - eject_usb: <true | false> optional, default true; wait for installation to complete and then eject usb media
 
 
 Dependencies
