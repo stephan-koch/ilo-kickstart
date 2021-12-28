@@ -41,7 +41,7 @@ Including an example of how to use your role (for instance, with variables passe
     - ilo-cred.yaml
     
   roles:
-  - { role: ilo-kickstart, myip: "xx.xx.xx.xx", myhostname: "xxxx.xxx.xxx.xxx.xxx", mygw: "xx.xx.xx.xx"  }
+  - { role: ilo-kickstart, baseuri: "xx.xx.xx.xx", myip: "xx.xx.xx.xx", myhostname: "xxxx.xxx.xxx.xxx.xxx", mygw: "xx.xx.xx.xx"  }
     
 
 License
