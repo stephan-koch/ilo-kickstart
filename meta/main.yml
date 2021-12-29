@@ -3,7 +3,7 @@ galaxy_info:
   description: "Install an os on an hpe proliant by mounting iso and kickstart via ilo virtualmedia"
   author: stephan.koch@hpe.com
   company: hpe.com
-  version: 0.2
+  version: 0.3
 collections:
   - hpe.ilo
   - community.general
