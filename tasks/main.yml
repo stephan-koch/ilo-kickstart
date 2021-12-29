@@ -36,7 +36,7 @@
       username: "{{ username }}"
       password: "{{ password }}"
       virtual_media:
-        image_url: ''
+        image_url: '{{webserver}}/stickks-{{myhostname}}.img'
       resource_id: "1"
     ignore_errors: yes
 
