@@ -17,7 +17,7 @@ This role uses:
     - webserver: <webserver from where to mount the virt. media> e.g.: "http://osdepl.demo.local/esx7"
     - bootiso: <name of the iso file> e.g.: "esx72usb.iso"
     - eject_usb: <true | false> optional, default true; wait for installation to complete and then eject usb media
-    - os: [esx (default) | rocky ] which os to install
+    - ksfile:  the roles has two examples ks-esx.j2 and ks-rocky.j2, but you could use your own in {{plabook_dir}}
 
 
 Dependencies

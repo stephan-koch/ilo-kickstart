@@ -4,7 +4,7 @@
   
   - name: adjust kickstart file
     template:
-        src: "{{role_path}}/templates/ks-{{myos}}.j2"
+        src: "{{ksfile}}"
         dest:  "{{playbook_dir}}/ks.cfg"    
     
   
@@ -14,7 +14,7 @@
   
   - name: Insert Virtual Media
     community.general.redfish_command:
-      category: Manager
+      category: xManager
       command: VirtualMediaInsert
       baseuri: "{{ baseuri }}"
       username: "{{ username }}"
