@@ -4,7 +4,7 @@
   
   - name: adjust kickstart file
     template:
-        src: "ks-{{myos}}.j2"
+        src: "{{role_path}}/templates/ks-{{myos}}.j2"
         dest:  "{{playbook_dir}}/ks.cfg"    
     
   

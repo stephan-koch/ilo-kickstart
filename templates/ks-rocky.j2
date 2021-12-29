@@ -1,0 +1,55 @@
+lang en_US.UTF-8
+keyboard de
+timezone Europe/Berlin --isUtc
+#platform x86, AMD64, or Intel EM64T
+text
+cdrom
+skipx
+network  --bootproto=static --ip={{myip}} --netmask=255.255.255.0 --gateway={{mygw}} --nameserver=10.1.20.5 --hostname={{myhostname}}
+firstboot --enable
+auth --passalgo=sha512 --useshadow
+rootpw HP1nvent
+ignoredisk --only-use=sda
+zerombr
+clearpart --all --initlabel
+autopart --type=lvm
+reboot
+
+user --name=bot --plaintext --password "HPE1nvent!" --groups=bot,wheel
+#repo --name=docker --baseurl=https://download.docker.com/linux/centos/docker-ce.repo
+
+# Disable firewall and selinux
+firewall --disabled
+selinux --disabled
+
+%pre
+%end
+
+%packages
+@^minimal-environment
+kexec-tools
+%end
+
+
+%post
+echo "bot        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/bot
+sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+
+/bin/mkdir /home/bot/.ssh
+/bin/chmod 700 /home/bot/.ssh
+/bin/chown bot:bot /home/bot/.ssh
+
+/bin/echo -e 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEyONAkTZOkHgTuZ4/NNd9YteQR3hFiraSpizf6as3i/5oiUZQ69oftXBR5IGzsTjHp0pp3tv2b5tFbE+rnb17MVFogeeqxd/YXTAjxCaVv5YJPm/6h0NMlvljPOCb167OTFiQQjShNQkzeooE5vprzBweg7EJdXu1tKm83dF2wNKmwj6GtaKI0LZ5zpvSEn3ERvQPgKSSC/sv/9aI2Ib0aHdM+62vl5PbyNK2i8YqYhQnLl+/XOn9HpfUNkrueqRNDTonYJlvyNKq29k0LUDqF0o2ciNfqkR73jCXiT9+LPyOkvxEJmA97uPjpJe4EqHtlkiCaAUCfYhhecEwKfWt emea\xxxxxxxx@PUD1VH0OS5' > /home/bot/.ssh/authorized_keys
+/bin/chown -R bot:bot /home/bot/.ssh
+/bin/chmod 0400 /home/bot/.ssh/*
+
+/usr/bin/yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+#/usr/bin/yum install docker-ce -y
+#/usr/bin/systemctl enable docker
+
+#/usr/sbin/usermod  -a -G docker bot
+/usr/bin/yum -y install epel-release
+/usr/bin/yum -y install python-pip
+/usr/bin/yum -y install python3
+#/usr/bin/pip3 install docker
+%end
