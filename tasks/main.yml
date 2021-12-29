@@ -36,8 +36,9 @@
       username: "{{ username }}"
       password: "{{ password }}"
       virtual_media:
-        image_url: '{{webserver}}/stickks-{{myhostname}}.img'
+        image_url: ''
       resource_id: "1"
+    ignore_errors: yes
 
   - name: Insert USB Virtual Media
     community.general.redfish_command:
