@@ -1,20 +1,19 @@
 lang en_US.UTF-8
 keyboard de
 timezone Europe/Berlin --isUtc
+rootpw $2b$10$ggPUedPEMgDIinQJAkB5i.QcAXOty9MxXqLESXDbQu8QZ..RON86y --iscrypted
 #platform x86, AMD64, or Intel EM64T
+reboot
 text
 cdrom
-skipx
-network  --bootproto=static --ip={{myip}} --netmask=255.255.255.0 --gateway={{mygw}} --nameserver=10.1.20.5 --hostname={{myhostname}}
-firstboot --enable
-rootpw HPE1nvent!
-#ignoredisk --only-use=sda
-#ignoredisk --drives=sda
-ignoredisk --only-use=nvme1n1
+bootloader --append="rhgb quiet crashkernel=auto"
 zerombr
 clearpart --all --initlabel
 autopart --type=lvm
-reboot
+network  --bootproto=static --ip={{myip}} --netmask=255.255.255.0 --gateway={{mygw}} --nameserver=10.1.20.5 --hostname={{myhostname}}
+auth --passalgo=sha512 --useshadow
+firstboot --disable
+skipx
 
 user --name=bot --plaintext --password "HPE1nvent!" --groups=bot,wheel
 #repo --name=docker --baseurl=https://download.docker.com/linux/centos/docker-ce.repo
