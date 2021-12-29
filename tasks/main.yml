@@ -14,7 +14,7 @@
   
   - name: Insert Virtual Media
     community.general.redfish_command:
-      category: xManager
+      category: Manager
       command: VirtualMediaInsert
       baseuri: "{{ baseuri }}"
       username: "{{ username }}"
