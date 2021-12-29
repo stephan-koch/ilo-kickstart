@@ -28,18 +28,6 @@
       # boot.cfg tweaked with kernelopt=cdromBoot runweasel ks=usb:/ks.cfg
 
         
-  - name: Eject USB Virtual Media if present
-    community.general.redfish_command:
-      category: Manager
-      command: VirtualMediaEject
-      baseuri: "{{ baseuri }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      virtual_media:
-        image_url: '{{webserver}}/stickks-{{myhostname}}.img'
-      resource_id: "1"
-    ignore_errors: yes
-
   - name: Insert USB Virtual Media
     community.general.redfish_command:
       category: Manager
