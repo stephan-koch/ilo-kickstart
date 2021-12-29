@@ -7,6 +7,7 @@ reboot
 text
 cdrom
 bootloader --append="rhgb quiet crashkernel=auto"
+ignoredisk --drives=sda
 zerombr
 clearpart --all --initlabel
 autopart --type=lvm
