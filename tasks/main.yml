@@ -20,7 +20,7 @@
       username: "{{ username }}"
       password: "{{ password }}"
       virtual_media:
-        image_url: '{{webserver}}/{{esxiso}}'
+        image_url: '{{webserver}}/{{bootiso}}'
         media_types:
           - CD
           - DVD
@@ -35,7 +35,7 @@
       username: "{{ username }}"
       password: "{{ password }}"
       virtual_media:
-        image_url: '{{webserver}}/esx7ks-{{myhostname}}.img'
+        image_url: '{{webserver}}/stickks-{{myhostname}}.img'
         media_types:
           - USBStick
       resource_id: "1"
@@ -67,6 +67,6 @@
       username: "{{ username }}"
       password: "{{ password }}"
       virtual_media:
-        image_url: '{{webserver}}/esx7ks-{{myhostname}}.img'
+        image_url: '{{webserver}}/stickks-{{myhostname}}.img'
       resource_id: "1"
     when: eject == true

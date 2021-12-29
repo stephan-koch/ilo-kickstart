@@ -9,7 +9,7 @@ network  --bootproto=static --ip={{myip}} --netmask=255.255.255.0 --gateway={{my
 firstboot --enable
 auth --passalgo=sha512 --useshadow
 rootpw HP1nvent
-ignoredisk --only-use=sda
+#ignoredisk --only-use=sda
 zerombr
 clearpart --all --initlabel
 autopart --type=lvm
