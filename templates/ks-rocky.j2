@@ -9,7 +9,8 @@ network  --bootproto=static --ip={{myip}} --netmask=255.255.255.0 --gateway={{my
 firstboot --enable
 rootpw HPE1nvent!
 #ignoredisk --only-use=sda
-ignoredisk --drives=sda
+#ignoredisk --drives=sda
+ignoredisk --only-use=nvme0n1
 zerombr
 clearpart --all --initlabel
 autopart --type=lvm
