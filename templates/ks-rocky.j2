@@ -7,9 +7,9 @@ cdrom
 skipx
 network  --bootproto=static --ip={{myip}} --netmask=255.255.255.0 --gateway={{mygw}} --nameserver=10.1.20.5 --hostname={{myhostname}}
 firstboot --enable
-auth --passalgo=sha512 --useshadow
-rootpw HP1nvent
+rootpw HPE1nvent!
 #ignoredisk --only-use=sda
+ignoredisk --drives=sda
 zerombr
 clearpart --all --initlabel
 autopart --type=lvm
