@@ -3,5 +3,5 @@
 #
 eject: "{{ eject_usb | default(true) }}"
 myos: "{{  os | default('esx') }}"
-smask: "{{ subnetmask | default('255.255.255.0')"
-nameserver: "{{ ns | default ('10.0.20.5')"
+smask: "{{ subnetmask | default('255.255.255.0')}}"
+nameserver: "{{ ns | default ('10.0.20.5')}}"
