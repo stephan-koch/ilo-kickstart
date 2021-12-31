@@ -21,38 +21,6 @@
     </signature-handling>
     <storage t="map"/>
   </general>
-  <add-on t="map">
-    <add_on_others t="list">
-      <listentry t="map">
-        <alias>repo-backports-update</alias>
-        <media_url>http://download.opensuse.org/update/leap/15.3/backports/</media_url>
-        <name>Update repository of openSUSE Backports</name>
-        <priority t="integer">99</priority>
-        <product_dir>/</product_dir>
-      </listentry>
-      <listentry t="map">
-        <alias>repo-non-oss</alias>
-        <media_url>http://download.opensuse.org/distribution/leap/15.3/repo/non-oss/</media_url>
-        <name>Non-OSS Repository</name>
-        <priority t="integer">99</priority>
-        <product_dir>/</product_dir>
-      </listentry>
-      <listentry t="map">
-        <alias>repo-sle-update</alias>
-        <media_url>http://download.opensuse.org/update/leap/15.3/sle/</media_url>
-        <name>Update repository with updates from SUSE Linux Enterprise 15</name>
-        <priority t="integer">99</priority>
-        <product_dir>/</product_dir>
-      </listentry>
-      <listentry t="map">
-        <alias>repo-update-non-oss</alias>
-        <media_url>http://download.opensuse.org/update/leap/15.3/non-oss/</media_url>
-        <name>Update Repository (Non-Oss)</name>
-        <priority t="integer">99</priority>
-        <product_dir>/</product_dir>
-      </listentry>
-    </add_on_others>
-  </add-on>
   <host t="map">
     <hosts t="list">
       <hosts_entry t="map">
@@ -167,12 +135,33 @@
       <use>all</use>
     </drive>
   </partitioning>
+  <services-manager t="map">
+    <default_target>multi-user</default_target>
+    <services t="map">
+      <enable t="list">
+        <service>YaST2-Firstboot</service>
+        <service>YaST2-Second-Stage</service>
+        <service>auditd</service>
+        <service>chronyd</service>
+        <service>cron</service>
+        <service>issue-generator</service>
+        <service>kbdsettings</service>
+        <service>lvm2-monitor</service>
+        <service>rsyslog</service>
+        <service>sshd</service>
+        <service>systemd-remount-fs</service>
+      </enable>
+    </services>
+  </services-manager>
   <software t="map">
     <install_recommended t="boolean">true</install_recommended>
     <instsource/>
     <packages t="list">
       <package>yast2-sudo</package>
       <package>sudo</package>
+      <package>openssh</package>
+      <package>openSUSE-release</package>
+      <package>glibc</package>
       <package>iputils</package>
       <package>nfs-client</package>
       <package>yast2-nfs-client</package>
