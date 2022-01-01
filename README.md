@@ -17,9 +17,9 @@ This role uses:
     - webserver: <webserver from where to mount the virt. media> e.g.: "http://osdepl.demo.local/esx7"
     - bootiso: <name of the iso file> e.g.: "esx72usb.iso"
     - eject_usb: <true | false> optional, default true; wait for installation to complete and then eject usb media
-    - ksfile:  the roles has two examples ks-esx.j2 and ks-rocky.j2, but you could use your own in {{plabook_dir}}
-    - smask: subnetmask, default: 255.255.255.0
-    - ns: nameserver, default: 10.0.20.5
+    - ksfile:  the roles has three examples ks-esx.j2, autoinst.j2 and ks-rocky.j2, but you could use your own in {{plabook_dir}}
+    - subnetmask, default: 255.255.255.0
+    - nameserver:  default: 10.0.20.5
 
 
 Dependencies

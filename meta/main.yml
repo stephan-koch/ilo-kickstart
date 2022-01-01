@@ -4,6 +4,3 @@ galaxy_info:
   author: stephan.koch@hpe.com
   company: hpe.com
   version: 0.3
-collections:
-  - hpe.ilo
-  - community.general

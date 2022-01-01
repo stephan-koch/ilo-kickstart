@@ -25,7 +25,11 @@
           - CD
           - DVD
       resource_id: "1"
-      # boot.cfg tweaked with kernelopt=cdromBoot runweasel ks=usb:/ks.cfg
+        # tweaked iso in grub cfg with:
+        # boot.cfg tweaked with kernelopt=cdromBoot runweasel ks=usb:/ks.cfg
+        # rocky:  linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=Rocky-8-5-x86_64-dvd quiet nvme_core.multipath=N inst.ks=hd:sda1:/ks.cfg
+        # opensusue:   linux /boot/x86_64/loader/linux splash=silent autoyast=usb:///ks.cfg
+        #
 
         
   - name: Insert USB Virtual Media
