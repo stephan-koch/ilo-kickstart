@@ -1,3 +1,2 @@
-dependencies:
+collections:
   - name: hpe.ilo
-  - name: community.general
