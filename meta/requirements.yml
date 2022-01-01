@@ -1,2 +1,3 @@
 ---
-  - name: hpe.ilo
+  #- name: hpe.ilo #### it is an collection see: https://github.com/ansible/ansible/issues/76030
+  #- name: community.general #### it is an collection see: https://github.com/ansible/ansible/issues/76030
