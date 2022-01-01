@@ -8,7 +8,7 @@ rootpw HP1nvent!
 clearpart --firstdisk --overwritevmfs
 install --firstdisk --overwritevmfs
 # Set the network to DHCP on the first network adapater, use the specified hostname and # Create a portgroup for the VMs
-network --bootproto=static --addvmportgroup=1 --ip={{myip}} --netmask={{smask}} --gateway={{mygw}} --nameserver={{nameserver}} --hostname={{myhostname}} --device=vmnic0
+network --bootproto=static --addvmportgroup=1 --ip={{myip}} --netmask={{smask}} --gateway={{mygw}} --nameserver={{ns}} --hostname={{myhostname}} --device=vmnic0
 # reboots the host after the scripted installation is completed
 reboot
 

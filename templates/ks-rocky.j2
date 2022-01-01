@@ -11,7 +11,7 @@ ignoredisk --drives=sda
 zerombr
 clearpart --all --initlabel
 autopart --type=lvm
-network  --bootproto=static --ip={{myip}} --netmask={{smask}} --gateway={{mygw}} --nameserver={{nameserver}} --hostname={{myhostname}}
+network  --bootproto=static --ip={{myip}} --netmask={{smask}} --gateway={{mygw}} --nameserver={{ns}} --hostname={{myhostname}}
 firstboot --disable
 skipx
 
