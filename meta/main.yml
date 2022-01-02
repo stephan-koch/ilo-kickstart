@@ -3,5 +3,5 @@ galaxy_info:
   description: "Install an os on an hpe proliant by mounting iso and kickstart via ilo virtualmedia"
   author: stephan.koch@hpe.com
   company: hpe.com
-  version: 1.0
+  version: 1.01
   min_ansible_version: 2.11
