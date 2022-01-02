@@ -6,7 +6,8 @@ An role for os installation with an kickstart file on an HPE Proliant
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- An Webserver the ilo has access to and ansible could post files to.
+- an customized boot-iso for your OS. kickstart must be searched on an USB device.
 
 Role Variables
 --------------
@@ -54,4 +55,4 @@ BSD
 
 Author Information
 ------------------
-Stephan Koch, HPE
+Stephan Koch
