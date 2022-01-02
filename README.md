@@ -20,7 +20,7 @@ This role uses: \
     - eject_usb: <true | false> optional, default true; wait for installation to complete and then eject usb media \
     - ksfile:  the roles has three examples ks-esx.j2, autoinst.j2 and ks-rocky.j2, but you could use your own in {{plabook_dir}} \
     - subnetmask, default: 255.255.255.0 \
-    - nameserver:  default: 10.0.20.5 \
+    - nameserver:  default: 10.0.20.5 
 
 
 Dependencies
@@ -36,11 +36,11 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: localhost \
   gather_facts: no \
   \
-  vars:\
+  vars:
     - webserver: "http://osdepl.demo.local/esx7"\
     - esxiso: "esx72usb.iso"\
-  vars_files:\
-    - ilo-cred.yaml\
+  vars_files:
+    - ilo-cred.yaml
     
   roles:
   - { role: ilo-kickstart, baseuri: "xx.xx.xx.xx", myip: "xx.xx.xx.xx", myhostname: "xxxx.xxx.xxx.xxx.xxx", mygw: "xx.xx.xx.xx"  }
