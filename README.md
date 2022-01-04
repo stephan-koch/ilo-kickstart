@@ -8,6 +8,7 @@ Requirements
 
 - An Webserver the ilo has access to and ansible could post files to.
 - an customized boot-iso for your OS. kickstart must be searched on an USB device.
+- be able to become root on the ansible workstation for inserting the kickstart file into the usb-stick image 
 
 Role Variables
 --------------
@@ -37,7 +38,7 @@ Including an example of how to use your role (for instance, with variables passe
   gather_facts: no \
   \
   vars:
-    - webserver: "http://osdepl.demo.local/esx7"\
+    - webserver: "http://osdepl.demo.local/esx7"
     - esxiso: "esx72usb.iso"\
   vars_files:
     - ilo-cred.yaml
