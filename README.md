@@ -9,6 +9,9 @@ Requirements
 
 - An Webserver the ilo has access to and ansible could post files to.
 - an customized boot-iso for your OS. kickstart must be searched on an USB device.
+  # ESX: boot.cfg tweaked with kernelopt=cdromBoot runweasel ks=usb:/ks.cfg
+  # rocky:  linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=.... quiet nvme_core.multipath=N inst.ks=hd:sda1:/ks.cfg
+  # opensusue:   linux /boot/x86_64/loader/linux splash=silent autoyast=usb:///ks.cfg
 - be able to become root on the ansible workstation for inserting the kickstart file into the usb-stick image 
 
 Role Variables
