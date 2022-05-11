@@ -16,7 +16,7 @@ network  --bootproto=static --ip={{myip}} --netmask={{smask}} --gateway={{mygw}}
 firstboot --disable
 skipx
 
-user --name=bot --plaintext --password "HPE1nvent!" --groups=bot,wheel
+user --name=bot --plaintext --password "HPE1nvent!" 
 #repo --name=docker --baseurl=https://download.docker.com/linux/centos/docker-ce.repo
 
 # Disable firewall and selinux
@@ -36,6 +36,8 @@ kexec-tools
 echo "bot        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers.d/bot
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 
+useradd -m bot  -g bot
+usermod -a -G wheel bot
 /bin/mkdir /home/bot/.ssh
 /bin/chmod 700 /home/bot/.ssh
 /bin/chown bot:bot /home/bot/.ssh
