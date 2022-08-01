@@ -45,11 +45,14 @@
           - USBStick
       resource_id: "1"
       
-  - name: SetOneTimeBoot
-    vars:
-      - bootdevice: "Cd"
-    include_role:
-      name: hpe.ilo.setonetimeboot
+  - name: Set one-time boot device to Cd
+    community.general.redfish_command:
+      category: Systems
+      command: SetOneTimeBoot
+      bootdevice: "Cd"
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
       
   - name: PowerOn
     include_role:  
