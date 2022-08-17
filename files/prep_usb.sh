@@ -15,3 +15,4 @@ cp ks.cfg stickdir
 umount stickdir
 kpartx -d stickks.img
 mv stickks.img ${3}/stickks-${2}.img || exit 97
+chmod 666 ${3}/stickks-${2}.img

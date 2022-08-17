@@ -11,6 +11,29 @@
   - name: prepare usb stick
     become: yes
     shell: "{{role_path}}/files/prep_usb.sh {{playbook_dir}} {{myhostname}} {{webserverdir}}" 
+
+  - name: Get Virtual Media information
+    redfish_info:
+      category: Manager
+      command: GetVirtualMedia
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+    register: result_attr
+
+  - name: eject virtual media if present
+    community.general.redfish_command:
+      category: Manager
+      command: VirtualMediaEject
+      baseuri: "{{ baseuri }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      virtual_media:
+        image_url: "{{ item.Image  }}"
+        media_types: "{{ item.MediaTypes }}"
+      resource_id: "1"
+    with_items: "{{result_attr.redfish_facts.virtual_media.entries[0] }}"
+    when: item.Image | default(false)    
   
   - name: Insert Virtual Media
     community.general.redfish_command:
@@ -45,14 +68,11 @@
           - USBStick
       resource_id: "1"
       
-  - name: Set one-time boot device to Cd
-    community.general.redfish_command:
-      category: Systems
-      command: SetOneTimeBoot
-      bootdevice: "Cd"
-      baseuri: "{{ baseuri }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+  - name: SetOneTimeBoot
+    vars:
+      - bootdevice: "Cd"
+    include_role:
+      name: hpe.ilo.setonetimeboot
       
   - name: PowerOn
     include_role:  
