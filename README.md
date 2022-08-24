@@ -12,6 +12,10 @@ Requirements
   # ESX: boot.cfg tweaked with kernelopt=cdromBoot runweasel ks=usb:/ks.cfg
   # rocky:  linuxefi /images/pxeboot/vmlinuz inst.stage2=hd:LABEL=.... quiet nvme_core.multipath=N inst.ks=hd:sda1:/ks.cfg
   # opensusue:   linux /boot/x86_64/loader/linux splash=silent autoyast=usb:///ks.cfg
+
+- create the iso with mkiso:
+  #esx: mkisofs -relaxed-filenames -J -R -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e efiboot.img -boot-load-size 1 -no-emul-boot -o /tmp/customesxi.iso .
+  #rocky:  mkisofs -o ../Rocky85.iso -b isolinux/isolinux.bin -J -R -l -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e images/efiboot.img -no-emul-boot -graft-points -V \"Rocky-8-5-x86_64-dvd\" .
 - be able to become root on the ansible workstation for inserting the kickstart file into the usb-stick image 
 
 Role Variables
